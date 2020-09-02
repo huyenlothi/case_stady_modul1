@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        button.start-btn {
+            width: 200px;
+            height: 100px;
+            font-size: 36px;
+        }
+        .main-content{
+            width: 500px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        body{
+            width: 100%;
+        }
+        button.start-btn:hover{
+            cursor: pointer;
+
+        }
+    </style>
 </head>
 <body onkeydown="moveObj(event)">
 
-<h1> Boucing Ball Game !!!</h1>
-<canvas id="canvas" width="500" height="700" style="border: 1px solid black"></canvas>
-<script src="Ball.js"></script>
+<div class="main-content">
+    <h1> Boucing Ball Game !!!</h1>
+    <canvas id="canvas" width="700" height="900" style="border: 1px solid black"></canvas>
+    <button class="start-btn" onclick="ballRun()"> start</button>
+    Score: <input type="text" id="score">
+</div>
 <script src="Bar.js"></script>
+<script src="ball.js"></script>
 <script>
-    let ball = new Ball(250,300,10,5,5);
-    ball.draw();
-    setInterval(ball.draw,10);
-    ball.draw();
-    let bar = new Bar(100,10,200,600,50);
+    let bar = new Bar(100,10,300,800,50);
+    let count=0;
     bar.draw();
     function moveObj(event) {
         switch (event.which) {
@@ -29,6 +51,25 @@
         bar.render();
         bar.draw();
     }
+    function ballRun() {
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let ball = new Ball(350, 300, 10, 5, 5);
+        function draw() {
+            ctx.clearRect(0, 0, 700, 900);
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2);
+            ctx.closePath();
+            ctx.fillStyle="red";
+            ctx.fill();
+            bar.draw();
+            ball.stepForward();
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+    }
+    document.getElementById("score").value = count;
 </script>
 </body>
 </html>

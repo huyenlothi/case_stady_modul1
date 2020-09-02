@@ -8,7 +8,7 @@ function Bar(width, height, x, y, speed) {
     this.draw = function () {
         let ctx = document.getElementById("canvas").getContext("2d");
         ctx.beginPath();
-        ctx.fillStyle = "#ff0000";
+        ctx.fillStyle = "black";
         ctx.fillRect(this.x, this.y,this.width,this.height);
         ctx.fill();
         ctx.closePath();
@@ -20,13 +20,13 @@ function Bar(width, height, x, y, speed) {
         }
     }
     this.moveRight = function () {
-        if (this.x < 500-this.width) {
+        if (this.x < 700-this.width) {
             this.x += this.speed;
             console.log("ok: " + this.x);
         }
     }
     this.render = function () {
         let ctx = document.getElementById("canvas").getContext("2d");
-        ctx.clearRect(0, 0, 500, 700);
+        ctx.clearRect(0, 0, 700, 900);
     }
 }
