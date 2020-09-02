@@ -8,7 +8,7 @@ function Bar(width, height, x, y, speed) {
     this.draw = function () {
         let ctx = document.getElementById("canvas").getContext("2d");
         ctx.beginPath();
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "brown";
         ctx.fillRect(this.x, this.y,this.width,this.height);
         ctx.fill();
         ctx.closePath();

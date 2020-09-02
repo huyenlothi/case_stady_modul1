@@ -11,10 +11,10 @@ let Ball = function(x, y, radius, dx, dy) {
         if (this.y - this.radius < 0 ) {
             this.dy = -this.dy;
         }else {
-            if (this.y == bar.y- this.radius) {
+            if (this.y == bar.y) {
                 if ( this.x > bar.x && this.x < (bar.x + bar.width )) {
                     this.dy = -this.dy;
-
+                    score++;
                 } else {
                     alert("GAME OVER !!!");
                     document.location.reload();
@@ -23,5 +23,9 @@ let Ball = function(x, y, radius, dx, dy) {
         }
         this.x = this.x + this.dx;
         this.y = this.y + this.dy;
+        if (score==20) {
+            alert("YOU WIN!!!");
+            document.location.reload();
+        }
     }
 }

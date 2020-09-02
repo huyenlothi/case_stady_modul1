@@ -21,23 +21,21 @@
         }
         button.start-btn:hover{
             cursor: pointer;
-
         }
     </style>
 </head>
 <body onkeydown="moveObj(event)">
 
 <div class="main-content">
-    <h1> Boucing Ball Game !!!</h1>
+    <h1> Bouncing Ball Game !!!</h1>
     <canvas id="canvas" width="700" height="900" style="border: 1px solid black"></canvas>
     <button class="start-btn" onclick="ballRun()"> start</button>
-    Score: <input type="text" id="score">
 </div>
 <script src="Bar.js"></script>
 <script src="ball.js"></script>
 <script>
     let bar = new Bar(100,10,300,800,50);
-    let count=0;
+    let score=0;
     bar.draw();
     function moveObj(event) {
         switch (event.which) {
@@ -60,8 +58,12 @@
             ctx.beginPath();
             ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2);
             ctx.closePath();
-            ctx.fillStyle="red";
+            ctx.fillStyle="blue";
             ctx.fill();
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Score: " + score, 10, 50);
+
             bar.draw();
             ball.stepForward();
             requestAnimationFrame(draw);
