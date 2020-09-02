@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onkeydown="moveObj(event)">
+
+<h1> Boucing Ball Game !!!</h1>
+<canvas id="canvas" width="500" height="700" style="border: 1px solid black"></canvas>
+<script src="Ball.js"></script>
+<script src="Bar.js"></script>
+<script>
+    let ball = new Ball(250,300,10,5,5);
+    ball.draw();
+    setInterval(ball.draw,10);
+    ball.draw();
+    let bar = new Bar(100,10,200,600,50);
+    bar.draw();
+    function moveObj(event) {
+        switch (event.which) {
+            case 37:
+                bar.moveLeft();
+                break;
+            case 39:
+                bar.moveRight();
+                break;
+        }
+        bar.render();
+        bar.draw();
+    }
+</script>
+</body>
+</html>
