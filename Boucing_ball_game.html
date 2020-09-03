@@ -29,12 +29,14 @@
 <div class="main-content">
     <h1> Bouncing Ball Game !!!</h1>
     <canvas id="canvas" width="700" height="900" style="border: 1px solid black"></canvas>
+<!--    <img src="https://images4.alphacoders.com/303/30304.png"  id="bg" >-->
     <button class="start-btn" onclick="ballRun()"> start</button>
 </div>
 <script src="Bar.js"></script>
 <script src="ball.js"></script>
 <script>
     let bar = new Bar(100,10,300,800,50);
+    let ball = new Ball(350, 300, 10, 5,5);
     let score=0;
     bar.draw();
     function moveObj(event) {
@@ -52,7 +54,6 @@
     function ballRun() {
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
-        let ball = new Ball(350, 300, 10, 5, 5);
         function draw() {
             ctx.clearRect(0, 0, 700, 900);
             ctx.beginPath();
@@ -67,11 +68,11 @@
             bar.draw();
             ball.stepForward();
             requestAnimationFrame(draw);
+
         }
         draw();
 
     }
-    document.getElementById("score").value = count;
 </script>
 </body>
 </html>
